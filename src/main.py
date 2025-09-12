@@ -8,6 +8,29 @@ def get_file_path(base_dir, filename):
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
 
+def gc_content(seq_path):
+    for record in SeqIO.parse(seq_path, "fasta"):
+        counter = 0
+        for nucleotide in record.seq:
+            if nucleotide in ['C', 'G']:
+                counter += 1
+        gc_content = (counter / len(record.seq)) * 100
+        return gc_content
+    
+def nucleotide_content(seq_path):
+    for record in SeqIO.parse(seq_path, "fasta"):
+        a_count = record.seq.count('A')
+        t_count = record.seq.count('T')
+        c_count = record.seq.count('C')
+        g_count = record.seq.count('G')
+        total = len(record.seq)
+        return {
+            'A': (a_count / total) * 100,
+            'T': (t_count / total) * 100,
+            'C': (c_count / total) * 100,
+            'G': (g_count / total) * 100
+        }
+
 def main():
     cls()
     base_dir = os.path.dirname(os.path.abspath(__file__)) # main.py path
@@ -19,15 +42,9 @@ def main():
         print(f"File {seq_path} does not exist.")
         return
     
-    for record in SeqIO.parse(seq_path, "fasta"):
-        counter = 0
-        print(f"Sequence ID: {record.id}")
-        print(f"Sequence Length: {len(record.seq)}")
-        for nucleotide in record.seq:
-            if nucleotide in ['C', 'G']:
-                counter += 1
-        gc_content = (counter / len(record.seq)) * 100
-        print(f"GC Content: {gc_content:.2f}%")
+    print(f"GC content: {gc_content(seq_path):.2f}%")
+    nuc_content = nucleotide_content(seq_path)
+    print(f"Nucleotide content: \nA: {nuc_content['A']:.2f}% \nT: {nuc_content['T']:.2f}% \nC: {nuc_content['C']:.2f}% \nG: {nuc_content['G']:.2f}%")
 
 if __name__ == "__main__":
     main()
