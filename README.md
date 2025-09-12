@@ -11,16 +11,16 @@ GC content is a critical parameter in molecular biology:
 - GC-rich regions (CpG islands) are often associated with promoter regions and gene regulation.
 
 ## ⭐️ Current Features
-- Read DNA sequences from FASTA files
-- Calculate global GC%
-- Perform sliding window GC% analysis
-- Display results in the terminal
+- Read DNA/RNA sequences from FASTA files
+- Calculate global GC % content
+- Display results in the terminal (not fully done)
+- ~~Perform sliding window GC% analysis~~
 
 ## 💾 Requirements:
 
 - Python 3.8+
 - Biopython (FASTA parsing)
-- Matplotlib / Plotly (optional, for visualization)
+- ~~Matplotlib / Plotly~~
 
 ## 💻 How to use
 **1. Clone the repository:**
@@ -59,6 +59,9 @@ python src/main.py
 
 
 ## 📚 References
+
+- CpG site: https://en.wikipedia.org/wiki/CpG_site
+- Coutinho, T. J. D., Franco, G. R., & Lobo, F. P. (2015). Homology-independent metrics for comparative genomics. Computational and Structural Biotechnology Journal, 13, 352–357
 
 ## ✅ To-Do
 
