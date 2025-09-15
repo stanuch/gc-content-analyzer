@@ -38,18 +38,21 @@ def main():
 
     seq_filename = input("Enter the name of your sequence file (without extension): ")
 
+    # Check if file exists and get full path
     seq_path = get_file_path(base_dir, seq_filename)
     if not os.path.exists(seq_path):
         print(f"File {seq_path} does not exist.")
         return
     
+    # Overall GC and nucleotide content
     print(f"GC content: {gc_content(seq_path):.2f}%")
     nuc_content = nucleotide_content(seq_path)
     print(f"Nucleotide content: \nA: {nuc_content['A']:.2f}% \nT: {nuc_content['T']:.2f}% \nC: {nuc_content['C']:.2f}% \nG: {nuc_content['G']:.2f}%")
 
-    for bin, percentage in sliding_gc_content(seq_path, 25, 2):
+    # Sliding window GC content
+    print("\nSliding window GC content (window size 26, step size 2):")
+    for bin, percentage in sliding_gc_content(seq_path, 26, 2):
         print(bin, f"{percentage:.2f}")
-
 
 if __name__ == "__main__":
     main()
