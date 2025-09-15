@@ -22,15 +22,24 @@ def nucleotide_content(seq_path):
     for record in SeqIO.parse(seq_path, "fasta"):
         a_count = record.seq.count('A')
         t_count = record.seq.count('T')
+        u_count = record.seq.count('U') # in case of RNA
         c_count = record.seq.count('C')
         g_count = record.seq.count('G')
         total = len(record.seq)
-        return {
-            'A': (a_count / total) * 100,
-            'T': (t_count / total) * 100,
-            'C': (c_count / total) * 100,
-            'G': (g_count / total) * 100
-        }
+        if 'U' in str(record.seq) and 'T' not in str(record.seq): # RNA
+            return {
+                'A': (a_count / total) * 100,
+                'U': (u_count / total) * 100,
+                'C': (c_count / total) * 100,
+                'G': (g_count / total) * 100
+            }
+        else:  # DNA
+            return {
+                'A': (a_count / total) * 100,
+                'T': (t_count / total) * 100,
+                'C': (c_count / total) * 100,
+                'G': (g_count / total) * 100
+    }
 
 def main():
     cls()
@@ -47,7 +56,11 @@ def main():
     # Overall GC and nucleotide content
     print(f"GC content: {gc_content(seq_path):.2f}%")
     nuc_content = nucleotide_content(seq_path)
-    print(f"Nucleotide content: \nA: {nuc_content['A']:.2f}% \nT: {nuc_content['T']:.2f}% \nC: {nuc_content['C']:.2f}% \nG: {nuc_content['G']:.2f}%")
+
+    if 'U' in nuc_content:
+        print(f"Nucleotide content: \nA: {nuc_content['A']:.2f}% \nU: {nuc_content['U']:.2f}% \nC: {nuc_content['C']:.2f}% \nG: {nuc_content['G']:.2f}%")
+    else:
+        print(f"Nucleotide content: \nA: {nuc_content['A']:.2f}% \nT: {nuc_content['T']:.2f}% \nC: {nuc_content['C']:.2f}% \nG: {nuc_content['G']:.2f}%")
 
     # Sliding window GC content
     print("\nSliding window GC content (window size 26, step size 2):")

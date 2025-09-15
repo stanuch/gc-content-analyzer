@@ -20,7 +20,8 @@ GC content is a critical parameter in molecular biology:
 
 - Python 3.8+
 - Biopython (FASTA parsing)
-- ~~Matplotlib / Plotly~~
+- ~~Pandas~~
+- ~~Plotly~~
 
 ## 💻 How to use
 **1. Clone the repository:**
@@ -33,9 +34,9 @@ cd dna-global-align
 pip install -r requirements.txt
 ```
 **3. Prepare your FASTA file**
-- Place your sequence files in the sequences/ folder.
-- Use the .fasta format.
-- When running the program, enter only the file name without the extension (e.g., for seq1.fasta, just type seq1).
+- Place your sequence files in the /sequences folder
+- Use the .fasta format
+- When running the program, enter only the file name without the extension (e.g., for seq1.fasta, just type seq1)
 
 **4. Run the program**
 ```bash
