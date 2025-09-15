@@ -1,5 +1,6 @@
 import os
 from Bio import SeqIO
+from sliding_window import sliding_gc_content
 
 def get_file_path(base_dir, filename):
     seq_dir = os.path.join(base_dir, "..", "sequences") # fasta files path
@@ -45,6 +46,10 @@ def main():
     print(f"GC content: {gc_content(seq_path):.2f}%")
     nuc_content = nucleotide_content(seq_path)
     print(f"Nucleotide content: \nA: {nuc_content['A']:.2f}% \nT: {nuc_content['T']:.2f}% \nC: {nuc_content['C']:.2f}% \nG: {nuc_content['G']:.2f}%")
+
+    for bin, percentage in sliding_gc_content(seq_path, 25, 2):
+        print(bin, f"{percentage:.2f}")
+
 
 if __name__ == "__main__":
     main()
