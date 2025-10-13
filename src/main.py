@@ -54,6 +54,7 @@ def main():
         return
     
     # Overall GC and nucleotide content
+    print(f"Number of nucleotides in the sequence: {len(next(SeqIO.parse(seq_path, 'fasta')).seq)}")
     print(f"GC content: {gc_content(seq_path):.2f}%")
     nuc_content = nucleotide_content(seq_path)
 
