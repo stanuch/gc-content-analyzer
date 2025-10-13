@@ -64,8 +64,16 @@ def main():
         print(f"Nucleotide content: \nA: {nuc_content['A']:.2f}% \nT: {nuc_content['T']:.2f}% \nC: {nuc_content['C']:.2f}% \nG: {nuc_content['G']:.2f}%")
 
     # Sliding window GC content
-    print("\nSliding window GC content (window size 26, step size 2):")
-    for bin, percentage in sliding_gc_content(seq_path, 26, 2):
+    window_size = int(input("\nEnter window size - for sliding window analysis (press enter for default 26): ") or 26)
+    if window_size < 1:
+        print("Window size must be a positive integer.")
+        return
+    step_size = int(input("Enter step size (press enter for default 2): ") or 2)
+    if step_size < 1:
+        print("Step size must be a positive integer.")
+        return
+    print(f"\nSliding window GC content (window size: {window_size}, step size: {step_size}):")
+    for bin, percentage in sliding_gc_content(seq_path, window_size, step_size):
         print(bin, f"{percentage:.2f}")
 
 if __name__ == "__main__":
