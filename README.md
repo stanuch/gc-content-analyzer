@@ -14,7 +14,7 @@ GC content is a critical parameter in molecular biology:
 - Read DNA/RNA sequences from FASTA files
 - Calculate global GC % content
 - Display results in the terminal (not fully done)
-- ~~Perform sliding window GC% analysis~~
+- Perform sliding window GC% analysis
 
 ## 💾 Requirements:
 
@@ -66,7 +66,6 @@ python src/main.py
 
 ## ✅ To-Do
 
-- Visualization of GC% distribution along sequences (Matplotlib / Plotly)
-- Support for multiple sequences in one FASTA file
+- Visualization of GC% distribution along sequences
 - Export results to CSV
-- Web-based interface for interactive analysis
+- GUI
