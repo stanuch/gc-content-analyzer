@@ -3,7 +3,7 @@ from Bio import SeqIO
 from sliding_window import sliding_gc_content
 
 def get_file_path(base_dir, filename):
-    seq_dir = os.path.join(base_dir, "..", "sequences") # fasta files path
+    seq_dir = os.path.join(base_dir, ".", "sequences") # fasta files path
     return os.path.join(seq_dir, f"{filename}.fasta")
 
 def cls():
