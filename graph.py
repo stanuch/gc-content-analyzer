@@ -16,10 +16,13 @@ def create_y_values(gc_list):
 def gc_content_graph(x: list, y: list):
     fig, ax = plt.subplots()
 
-    ax.plot(x,y, linewidth=2.0)
+    ax.stackplot(x,y)
     ax.set_xlabel('Nucleotide Position')
     ax.set_ylabel('GC Content (%)')
     ax.set_title('GC Content Across Sequence')
+
+    ax.set(xlim=(min(x), max(x)), ylim=(0, 100))
+    
     ax.grid()
     plt.show()
     return fig, ax
