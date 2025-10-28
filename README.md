@@ -13,15 +13,15 @@ GC content is a critical parameter in molecular biology:
 ## ⭐️ Current Features
 - Read DNA/RNA sequences from FASTA files
 - Calculate global GC % content
-- Display results in the terminal (not fully done)
+- Display results in the terminal
 - Perform sliding window GC% analysis
+- Create a plot with GC data
 
 ## 💾 Requirements:
 
 - Python 3.8+
 - Biopython (FASTA parsing)
-- ~~Pandas~~
-- ~~Plotly~~
+- Matplotlib
 
 ## 💻 How to use
 **1. Clone the repository:**

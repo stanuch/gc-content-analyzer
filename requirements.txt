@@ -1,4 +1,3 @@
 biopython
 numpy
-pandas
-plotly
+matplotlib

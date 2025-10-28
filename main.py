@@ -1,6 +1,7 @@
 import os
 from Bio import SeqIO
 from sliding_window import sliding_gc_content
+from graph import create_x_values, create_y_values, gc_content_graph
 
 def get_file_path(base_dir, filename):
     seq_dir = os.path.join(base_dir, ".", "sequences") # fasta files path
@@ -73,8 +74,14 @@ def main():
         print("Step size must be a positive integer.")
         return
     print(f"\nSliding window GC content (window size: {window_size}, step size: {step_size}):")
-    for bin, percentage in sliding_gc_content(seq_path, window_size, step_size):
-        print(bin, f"{percentage:.2f}")
+    # for bin, percentage in sliding_gc_content(seq_path, window_size, step_size):
+    #     print(bin, f"{percentage:.2f}")
+    
+    gc_list = sliding_gc_content(seq_path, window_size, step_size)
+
+    x, y = create_x_values(gc_list), create_y_values(gc_list)
+    
+    gc_content_graph(x, y)
 
 if __name__ == "__main__":
     main()
