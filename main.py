@@ -4,7 +4,7 @@ from sliding_window import sliding_gc_content
 from graph import create_x_values, create_y_values, gc_content_graph
 
 def get_file_path(base_dir, filename):
-    seq_dir = os.path.join(base_dir, ".", "sequences") # fasta files path
+    seq_dir = os.path.join(base_dir, ".", "sequences")
     return os.path.join(seq_dir, f"{filename}.fasta")
 
 def cls():
@@ -23,7 +23,7 @@ def nucleotide_content(seq_path):
     for record in SeqIO.parse(seq_path, "fasta"):
         a_count = record.seq.count('A')
         t_count = record.seq.count('T')
-        u_count = record.seq.count('U') # in case of RNA
+        u_count = record.seq.count('U')
         c_count = record.seq.count('C')
         g_count = record.seq.count('G')
         total = len(record.seq)
@@ -48,7 +48,6 @@ def main():
 
     seq_filename = input("Enter the name of your sequence file (without extension): ")
 
-    # Check if file exists and get full path
     seq_path = get_file_path(base_dir, seq_filename)
     if not os.path.exists(seq_path):
         print(f"File {seq_path} does not exist.")
@@ -60,9 +59,9 @@ def main():
     nuc_content = nucleotide_content(seq_path)
 
     if 'U' in nuc_content:
-        print(f"Nucleotide content: \nA: {nuc_content['A']:.2f}% \nU: {nuc_content['U']:.2f}% \nC: {nuc_content['C']:.2f}% \nG: {nuc_content['G']:.2f}%")
+        print(f"\nNucleotide content: \nA: {nuc_content['A']:.2f}% \nU: {nuc_content['U']:.2f}% \nC: {nuc_content['C']:.2f}% \nG: {nuc_content['G']:.2f}%")
     else:
-        print(f"Nucleotide content: \nA: {nuc_content['A']:.2f}% \nT: {nuc_content['T']:.2f}% \nC: {nuc_content['C']:.2f}% \nG: {nuc_content['G']:.2f}%")
+        print(f"\nNucleotide content: \nA: {nuc_content['A']:.2f}% \nT: {nuc_content['T']:.2f}% \nC: {nuc_content['C']:.2f}% \nG: {nuc_content['G']:.2f}%")
 
     # Sliding window GC content
     window_size = int(input("\nEnter window size - for sliding window analysis (press enter for default 26): ") or 26)
@@ -73,14 +72,11 @@ def main():
     if step_size < 1:
         print("Step size must be a positive integer.")
         return
-    print(f"\nSliding window GC content (window size: {window_size}, step size: {step_size}):")
-    # for bin, percentage in sliding_gc_content(seq_path, window_size, step_size):
-    #     print(bin, f"{percentage:.2f}")
+    print(f"Sliding window GC content (window size: {window_size}, step size: {step_size}):")
     
+    # Creating and displaying the graph
     gc_list = sliding_gc_content(seq_path, window_size, step_size)
-
     x, y = create_x_values(gc_list), create_y_values(gc_list)
-    
     gc_content_graph(x, y)
 
 if __name__ == "__main__":

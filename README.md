@@ -19,8 +19,8 @@ GC content is a critical parameter in molecular biology:
 
 ## 💾 Requirements:
 
-- Python 3.8+
-- Biopython (FASTA parsing)
+- Python
+- Biopython
 - Matplotlib
 
 ## 💻 How to use
@@ -40,7 +40,7 @@ pip install -r requirements.txt
 
 **4. Run the program**
 ```bash
-python src/main.py
+python main.py
 ```
 
 ## 📖 Theoretical background
@@ -66,6 +66,5 @@ python src/main.py
 
 ## ✅ To-Do
 
-- Visualization of GC% distribution along sequences
 - Export results to CSV
 - GUI
