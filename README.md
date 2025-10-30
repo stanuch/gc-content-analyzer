@@ -1,14 +1,16 @@
 # 📊 GC Content Analyzer
 ## 📋 Overview
 
-GC Content Analyzer is a lightweight bioinformatics tool written in Python for analyzing the GC content of DNA sequences provided in FASTA format.
-It computes both global GC percentage and local GC content using a sliding window approach.
+GC Content Analyzer is a lightweight bioinformatics tool written in Python for analyzing the GC content of DNA sequences provided in FASTA format. 
+It computes both global GC percentage and local GC content using a sliding window approach. The app generates a graph of the GC content percentage across the sequence and calculates the CpG and GpC islands count per 100 nucleotides (nt) in the sequence.
 
-GC content is a critical parameter in molecular biology:
+<p align="center">
+  <img width="680" height="280" alt="gc content" src="https://github.com/user-attachments/assets/42ea620c-4183-4b2d-9e3e-d72959d03d36" />
+  <img width="680" height="280" alt="cpg counts" src="https://github.com/user-attachments/assets/fbcca3da-0ef8-486e-b70f-be24e6b31116" />
+</p>
 
-- It affects DNA stability due to stronger G≡C base pairing (3 hydrogen bonds).
-- It influences PCR performance, primer design, and cloning efficiency.
-- GC-rich regions (CpG islands) are often associated with promoter regions and gene regulation.
+
+
 
 ## ⭐️ Current Features
 - Read DNA/RNA sequences from FASTA files
