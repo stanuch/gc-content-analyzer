@@ -1,13 +1,13 @@
 import os
 from Bio import SeqIO
-from sliding_window import sliding_gc_content
-from graph import create_x_values, create_y_values, gc_content_graph
+from sliding_window import sliding_gc_content, cpg_islands, gpc_islands
+from graph import create_x_values, create_y_values, gc_content_graph, cpg_islands_graph
 
 def get_file_path(base_dir: str, filename: str) -> str:
     seq_dir = os.path.join(base_dir, ".", "sequences")
     return os.path.join(seq_dir, f"{filename}.fasta")
 
-def cls():
+def cls() -> None:
     os.system("cls" if os.name=="nt" else "clear")
 
 def gc_content(seq_path: str) -> float:
@@ -40,9 +40,9 @@ def nucleotide_content(seq_path: str) -> dict:
                 "T": (t_count / total) * 100,
                 "C": (c_count / total) * 100,
                 "G": (g_count / total) * 100
-    }
+            }
 
-def main():
+def main() -> None:
     cls()
     base_dir = os.path.dirname(os.path.abspath(__file__)) # main.py path
 
@@ -78,6 +78,11 @@ def main():
     gc_list = sliding_gc_content(seq_path, window_size, step_size)
     x, y = create_x_values(gc_list), create_y_values(gc_list)
     gc_content_graph(x, y)
+
+    # CpG islands calculations and graph
+    cpgs = cpg_islands(seq_path)
+    gpcs = gpc_islands(seq_path)
+    cpg_islands_graph(cpgs, gpcs)
 
 if __name__ == "__main__":
     main()
