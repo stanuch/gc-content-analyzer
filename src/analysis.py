@@ -1,5 +1,37 @@
 from Bio import SeqIO
 
+def gc_content(seq_path: str) -> float:
+    for record in SeqIO.parse(seq_path, "fasta"):
+        counter = 0
+        for nucleotide in record.seq:
+            if nucleotide in ["C", "G", "c", "g"]:
+                counter += 1
+        gc_content = (counter / len(record.seq)) * 100
+        return gc_content
+    
+def nucleotide_content(seq_path: str) -> dict:
+    for record in SeqIO.parse(seq_path, "fasta"):
+        a_count = record.seq.count("A") + record.seq.count("a")
+        t_count = record.seq.count("T") + record.seq.count("t")
+        u_count = record.seq.count("U") + record.seq.count("u")
+        c_count = record.seq.count("C") + record.seq.count("c")
+        g_count = record.seq.count("G") + record.seq.count("g")
+        total = len(record.seq)
+        if "U" in str(record.seq) and "T" not in str(record.seq): # RNA
+            return {
+                "A": (a_count / total) * 100,
+                "U": (u_count / total) * 100,
+                "C": (c_count / total) * 100,
+                "G": (g_count / total) * 100
+            }
+        else:  # DNA
+            return {
+                "A": (a_count / total) * 100,
+                "T": (t_count / total) * 100,
+                "C": (c_count / total) * 100,
+                "G": (g_count / total) * 100
+            }
+        
 def sliding_gc_content(seq_path: str, window_size: int, step_size: int) -> list:
     for record in SeqIO.parse(seq_path, "fasta"):
         sequence = str(record.seq)

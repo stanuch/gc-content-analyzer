@@ -1,46 +1,14 @@
 import os
 from Bio import SeqIO
-from sliding_window import sliding_gc_content, cpg_islands, gpc_islands
 from graph import create_x_values, create_y_values, gc_content_graph, cpg_islands_graph
+from analysis import gc_content, nucleotide_content, sliding_gc_content, cpg_islands, gpc_islands
 
 def get_file_path(base_dir: str, filename: str) -> str:
-    seq_dir = os.path.join(base_dir, ".", "sequences")
+    seq_dir = os.path.join(base_dir, "..", "sequences")
     return os.path.join(seq_dir, f"{filename}.fasta")
 
 def cls() -> None:
     os.system("cls" if os.name=="nt" else "clear")
-
-def gc_content(seq_path: str) -> float:
-    for record in SeqIO.parse(seq_path, "fasta"):
-        counter = 0
-        for nucleotide in record.seq:
-            if nucleotide in ["C", "G", "c", "g"]:
-                counter += 1
-        gc_content = (counter / len(record.seq)) * 100
-        return gc_content
-    
-def nucleotide_content(seq_path: str) -> dict:
-    for record in SeqIO.parse(seq_path, "fasta"):
-        a_count = record.seq.count("A") + record.seq.count("a")
-        t_count = record.seq.count("T") + record.seq.count("t")
-        u_count = record.seq.count("U") + record.seq.count("u")
-        c_count = record.seq.count("C") + record.seq.count("c")
-        g_count = record.seq.count("G") + record.seq.count("g")
-        total = len(record.seq)
-        if "U" in str(record.seq) and "T" not in str(record.seq): # RNA
-            return {
-                "A": (a_count / total) * 100,
-                "U": (u_count / total) * 100,
-                "C": (c_count / total) * 100,
-                "G": (g_count / total) * 100
-            }
-        else:  # DNA
-            return {
-                "A": (a_count / total) * 100,
-                "T": (t_count / total) * 100,
-                "C": (c_count / total) * 100,
-                "G": (g_count / total) * 100
-            }
 
 def main() -> None:
     cls()

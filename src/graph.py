@@ -31,7 +31,7 @@ def gc_content_graph(x: list, y: list) -> tuple:
     plt.colorbar(sm, ax=ax, label="GC Content (%)")
     
     ax.grid(alpha=0.4)
-    plt.show()
+    # plt.show()
     return fig, ax
 
 def cpg_islands_graph(cpg_counts: list, gpc_counts: list) -> tuple:
@@ -54,5 +54,5 @@ def cpg_islands_graph(cpg_counts: list, gpc_counts: list) -> tuple:
     ax.legend(loc='upper right', fontsize=11, framealpha=0.9)
     
     ax.grid(alpha=0.4)
-    plt.show()
+    # plt.show()
     return fig, ax
