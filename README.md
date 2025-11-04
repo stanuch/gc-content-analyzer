@@ -4,26 +4,35 @@
 GC Content Analyzer is a lightweight bioinformatics tool written in Python for analyzing the GC content of DNA sequences provided in FASTA format. 
 It computes both global GC percentage and local GC content using a sliding window approach. The app generates a graph of the GC content percentage across the sequence and calculates the CpG and GpC islands count per 100 nucleotides (nt) in the sequence.
 
+## ✨ Key Features
+- **Global and Local GC Analysis**: Calculates the total GC percentage and generates a dynamic graph of local GC content using a sliding window approach.
+- **CpG Island Visualization**: Counts CpG and GpC islands per 100 nucleotides (nt) in the sequence.
+- **Nucleotide Statistics**: Presents the percentage breakdown of individual nucleotides in a clear bar chart.
+- **Visualization**: Generates and automatically saves plots to a dedicated output folder.
+
+## 📊 Output and Visualizations
+**GC Content Across Sequence** - This graph shows the local GC percentage (Y-axis) along the sequence (X-axis). The color scale represents the GC content intensity.
+
 <p align="center">
   <img width="680" height="280" alt="gc content" src="https://github.com/user-attachments/assets/42ea620c-4183-4b2d-9e3e-d72959d03d36" />
+</p>
+
+**CpG and GpC Island Counts** - A chart visualizing the density of CpG and GpC islands per 100 nucleotides.
+
+<p align="center">
   <img width="680" height="280" alt="cpg counts" src="https://github.com/user-attachments/assets/fbcca3da-0ef8-486e-b70f-be24e6b31116" />
 </p>
 
+**Nucleotide Composition Summary** - The program also provides a bar chart summarizing the percentage composition of A, C, T, and G nucleotides:
 
-
-
-## ⭐️ Current Features
-- Read DNA/RNA sequences from FASTA files
-- Calculate global GC % content
-- Display results in the terminal
-- Perform sliding window GC% analysis
-- Create a plot with GC data
+<p align="center"> <img alt="ACTG Nucleotides percentage shown as a bars" src="https://github.com/user-attachments/assets/fe681c5a-f6f7-4957-be34-3ac460a41ce1" /> </p>
 
 ## 💾 Requirements:
 
 - Python
 - Biopython
 - Matplotlib
+- Colorama
 
 ## 💻 How to use
 **1. Clone the repository:**
@@ -65,8 +74,3 @@ python main.py
 
 - CpG site: https://en.wikipedia.org/wiki/CpG_site
 - Coutinho, T. J. D., Franco, G. R., & Lobo, F. P. (2015). Homology-independent metrics for comparative genomics. Computational and Structural Biotechnology Journal, 13, 352–357
-
-## ✅ To-Do
-
-- Export results to CSV
-- GUI
