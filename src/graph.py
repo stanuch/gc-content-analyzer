@@ -49,8 +49,9 @@ def cpg_islands_graph(cpg_counts: list, gpc_counts: list) -> tuple:
     ax.set_xlabel("Nucleotide Position", fontweight="bold")
     ax.set_ylabel("Count per 100 nt", fontweight="bold")
     ax.set_title("CpG and GpC Counts Across Sequence", fontweight="bold")
-    
-    ax.set(xlim=(min(x_cpg), max(x_cpg)), ylim=(0, max(y_cpg) + 5))
+
+    max_y = max(max(y_cpg), max(y_gpc))
+    ax.set(xlim=(min(x_cpg), max(x_cpg)), ylim=(0, max_y + 3))
     ax.legend(loc="upper right", fontsize=11, framealpha=0.9)
     
     ax.grid(alpha=0.4)
