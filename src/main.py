@@ -1,5 +1,6 @@
 import os
 from Bio import SeqIO
+from analysis import gc_content, nucleotide_content, sliding_gc_content, cpg_islands, gpc_islands
 from graph import create_x_values, create_y_values, gc_content_graph, cpg_islands_graph
 from analysis import gc_content, nucleotide_content, sliding_gc_content, cpg_islands, gpc_islands
 
@@ -9,7 +10,7 @@ def get_file_path(base_dir: str, filename: str) -> str:
 
 def cls() -> None:
     os.system("cls" if os.name=="nt" else "clear")
-
+    
 def main() -> None:
     cls()
     base_dir = os.path.dirname(os.path.abspath(__file__)) # main.py path
