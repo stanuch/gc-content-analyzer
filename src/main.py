@@ -14,7 +14,7 @@ def cls() -> None:
     
 def print_header():
     print("\n" + "="*60)
-    print(f"{Fore.CYAN}{Style.BRIGHT}{'GC Content Analyzer':^60}{Style.RESET_ALL}")
+    print(f"{Fore.CYAN}{Style.BRIGHT}{'GC CONTENT ANALYZER':^60}{Style.RESET_ALL}")
     print("="*60 + "\n")
 
 def print_section(title):
@@ -38,7 +38,6 @@ def get_styled_input(prompt, default=None):
     return input(full_prompt)
 
 def print_nucleotide_bar(label, percentage, color):
-    """Display a visual bar for nucleotide content"""
     bar_length = 30
     filled = int((percentage / 100) * bar_length)
     bar = "█" * filled + "░" * (bar_length - filled)
