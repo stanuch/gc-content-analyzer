@@ -1,6 +1,9 @@
 # GC Content Analyzer
-![License](https://img.shields.io/badge/License-MIT-green) ![Python](https://img.shields.io/badge/Python-3.x-blue?logo=Python) ![Status](https://img.shields.io/badge/status-usable_but_in_progress-yellow) ![Last Commit](https://img.shields.io/github/last-commit/stanuch/gc-content-analyzer) ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-blueviolet)
-
+![License](https://img.shields.io/badge/License-MIT-green) 
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=Python) 
+![Status](https://img.shields.io/badge/status-functional-success)
+![Stage](https://img.shields.io/badge/project-early_development-yellow)
+![Last Commit](https://img.shields.io/github/last-commit/stanuch/seq-global-align)
 
 ## Overview
 
